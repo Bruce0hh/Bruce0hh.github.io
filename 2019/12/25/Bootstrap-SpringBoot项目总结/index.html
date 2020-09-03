@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="bootstrap,springboot,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近在实验室做了一个小项目，内容主要是对前端开发的一些基本操作，由于自己前端知识较为浅薄，在此记录下整个项目的开发的流程和学习到的知识点。">
+<meta name="keywords" content="bootstrap,springboot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap+SpringBoot项目总结">
+<meta property="og:url" content="http://www.bruce0hh.top/2019/12/25/Bootstrap-SpringBoot项目总结/index.html">
+<meta property="og:site_name" content="Bruce0hh个人博客">
+<meta property="og:description" content="最近在实验室做了一个小项目，内容主要是对前端开发的一些基本操作，由于自己前端知识较为浅薄，在此记录下整个项目的开发的流程和学习到的知识点。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/25/lFO3Md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/25/lFO6Zq.png">
+<meta property="og:updated_time" content="2020-02-08T14:46:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bootstrap+SpringBoot项目总结">
+<meta name="twitter:description" content="最近在实验室做了一个小项目，内容主要是对前端开发的一些基本操作，由于自己前端知识较为浅薄，在此记录下整个项目的开发的流程和学习到的知识点。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/25/lFO3Md.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.bruce0hh.top/2019/12/25/Bootstrap-SpringBoot项目总结/">
+
+
+
+
+
+  <title>Bootstrap+SpringBoot项目总结 | Bruce0hh个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bruce0hh个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.bruce0hh.top/2019/12/25/Bootstrap-SpringBoot项目总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce0hh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce0hh个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Bootstrap+SpringBoot项目总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T21:44:10+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-08T22:46:20+08:00">
+                2020-02-08
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>最近在实验室做了一个小项目，内容主要是对前端开发的一些基本操作，由于自己前端知识较为浅薄，在此记录下整个项目的开发的流程和学习到的知识点。</p>
+</blockquote>
+<a id="more"></a>
+
+<blockquote>
+<p>2020-1-12：</p>
+<ul>
+<li>准备上线测试才发现前后两端的问题不少</li>
+<li>前后端分开做都没啥问题，交互的时候数据格式需要变换</li>
+<li>诸如此类的细节我将会在这次更新使用ps一一补充说明 </li>
+</ul>
+</blockquote>
+<h2 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h2><ul>
+<li>利用日历控件做一个通过日期查询当日记录的所有区块，并以表格形式展示。</li>
+<li>在表格中可以点击查看区块详情，并将区块详情以模态框的形式展示。</li>
+<li>模态框可以上下翻页查看上一个、下一个区块。</li>
+<li>当日区块的表格之下设计一个饼图展示当日区块类型划分。</li>
+</ul>
+<h2 id="项目成果"><a href="#项目成果" class="headerlink" title="项目成果"></a>项目成果</h2><img src="https://s2.ax1x.com/2019/12/25/lFO3Md.png" alt="lFO3Md.png" style="zoom: 67%;">
+
+<img src="https://s2.ax1x.com/2019/12/25/lFO6Zq.png" alt="lFO6Zq.png" style="zoom:67%;">
+
+<h2 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h2><h3 id="项目思路"><a href="#项目思路" class="headerlink" title="项目思路"></a>项目思路</h3><h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><ul>
+<li>使用datetimepicker做一个包含日历控件的查询按钮，前端使用ajax将值传至服务器。</li>
+<li>服务器将YYYY-MM-DD格式的日期解析，查询“YYYY/MM/DD”文件夹下的所有区块，将所有区块解析后，封装成一个JSONArray返回客户端。</li>
+<li>前端ajax接收json数组后，将数据放入bootstrap-table。</li>
+<li>设计一个详情按钮，读取当前行的索引index，将当前index值的json数据取出，放入模态框中。</li>
+<li>模态框设计两个翻页按钮，对index值进行+-，便可实现翻页功能。</li>
+</ul>
+<h4 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h4><ul>
+<li>点击查询的时候同样使用ajax传值至后台。</li>
+<li>后台依然解析日期，查询“YYYY/MM/DD”文件夹下各个类型文件夹内的文件数量，依然封装成一个JSONArray返回客户端。</li>
+<li>客户端接受数据，使用echarts初始化饼图，配置数据。</li>
+</ul>
+<p>接下来我会按我使用的开源插件各个部分进行说明，本次项目使用的工具是 <strong>IDEA+VSCode+FireFox</strong>。</p>
+<h3 id="Bootstrap-datetimepicker"><a href="#Bootstrap-datetimepicker" class="headerlink" title="Bootstrap datetimepicker"></a>Bootstrap datetimepicker</h3><p>这是我在项目中使用的第一个插件，由于本项目是在原本一个网页基础上改造的，原来使用的是bootstrap v3，我也顺势找了一个符合v3版本的datetimepicker，网上的版本参差不齐，尤其是中文版本不太符合，在做前期工作的时候，我就使用了cdn在线引用地址，插件配置如下。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'input-group date'</span> <span class="attr">style</span>=<span class="string">"width: 16em;"</span> <span class="attr">id</span>=<span class="string">'datetimepicker1'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'text'</span> <span class="attr">id</span>=<span class="string">"searchDate"</span> <span class="attr">class</span>=<span class="string">"form-control datetimepicker-input"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-calendar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#datetimepicker1'</span>).datetimepicker(&#123;</span><br><span class="line">    format: <span class="string">'YYYY-MM-DD'</span>,</span><br><span class="line">    locale: moment.locale(<span class="string">'zh-cn'</span>),<span class="comment">//设置中文</span></span><br><span class="line">    defaultDate: <span class="keyword">new</span> <span class="built_in">Date</span>(),<span class="comment">//设置默认时间为今天</span></span><br><span class="line">    maxDate:<span class="keyword">new</span> <span class="built_in">Date</span>(),<span class="comment">//设置可查询的最晚时间</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//获取datetimepicker输入框中的值</span></span><br><span class="line"><span class="comment">//var date = $('#datetimepicker1').find('input').val()</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>ps：<code>var date = $(&#39;#datetimepicker1&#39;).find(&#39;input&#39;).val()</code>该语句需要放入点击查询按钮的事件中，否则不会更新。</strong></p>
+<p>中间设置中文的部分需要使用到的是moment.js，也是一个bootstrap常用的插件。</p>
+<p>另外，在datetimepicker中获取&lt;input&gt;框的值与平常的取值不同，需要注意！</p>
+<p><strong>引用的cdn地址可以直接用迅雷等下载器下载！！！</strong></p>
+<p>我一直不知道这个，这次在GitHub下载datetimepicker源码时，发现只有js文件，没有css文件，而需要使用则必须将源码里面的sass或less文件转换成css文件。然而后来发现cdn地址可以直接下载文件。</p>
+<h3 id="Bootstrap-Table"><a href="#Bootstrap-Table" class="headerlink" title="Bootstrap Table"></a><span id="bt">Bootstrap Table</span></h3><p><strong>ps:与后端对接后，前端表格分页对json数据格式更有要求。</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    total:xxx,//xxx为jsonArray的大小</span><br><span class="line">    rows：&#123;</span><br><span class="line">		....//jsonArray    </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//如果rows不行，可以试试data</span><br><span class="line">//同时注意bootstrap Table中的sidePagination配置项</span><br></pre></td></tr></table></figure>
+
+<p><strong>后端向前端分页的bootstrap Table传入的数据必须是上述格式。</strong></p>
+<p>这也是一个bootstrap里面一个比较常用的表格插件，对数据导入、展示都非常方便。详细信息如下。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"blockCharts"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"table"</span> <span class="attr">class</span>=<span class="string">"table text-nowrap"</span> <span class="attr">style</span>=<span class="string">"min-width:150px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将初始化table封装成一个函数</span></span><br><span class="line"><span class="keyword">var</span> InitTable = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//先销毁表格</span></span><br><span class="line">    $(<span class="string">'#table'</span>).bootstrapTable(<span class="string">"destroy"</span>);</span><br><span class="line">    <span class="comment">//初始化表格</span></span><br><span class="line">    $(<span class="string">'#table'</span>).bootstrapTable(&#123;</span><br><span class="line">        url: data,<span class="comment">//数据来源，本地json文件，后台json数据都可以</span></span><br><span class="line">        <span class="comment">//url: 'demo.json'</span></span><br><span class="line">        <span class="comment">//url: '/json'</span></span><br><span class="line">        striped: <span class="literal">true</span>, <span class="comment">// 是否显示行间隔色</span></span><br><span class="line">        <span class="comment">//search : "true",//是否使用自带的搜索框</span></span><br><span class="line">        uniqueId: <span class="string">"ID"</span>,</span><br><span class="line">        pageSize: <span class="string">"5"</span>,<span class="comment">//每页展示数据的数目</span></span><br><span class="line">        pagination: <span class="literal">true</span>, <span class="comment">// 是否分页</span></span><br><span class="line">        pageList: [],<span class="comment">//可选分页数，</span></span><br><span class="line">        <span class="comment">//pageLIst: [5,8,15]</span></span><br><span class="line">        sortable: <span class="literal">true</span>, <span class="comment">// 是否启用排序</span></span><br><span class="line">        locale: <span class="string">"zh-CN"</span>,</span><br><span class="line">        <span class="comment">//显示时background-color白灰相间</span></span><br><span class="line">        columns: [&#123;</span><br><span class="line">            field: <span class="string">'name'</span>,<span class="comment">//json的key值</span></span><br><span class="line">            title: <span class="string">'区块名'</span>,</span><br><span class="line">            <span class="comment">//将数据过长的部分以省略号显示</span></span><br><span class="line">            cellStyle : <span class="function"><span class="keyword">function</span>(<span class="params">value, row, index, field</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    css: &#123;</span><br><span class="line">                        <span class="string">"min-width"</span>: <span class="string">"150px"</span>,</span><br><span class="line">                        <span class="string">"white-space"</span>: <span class="string">'nowrap'</span>,</span><br><span class="line">                        <span class="string">"text-overflow"</span>: <span class="string">'ellipsis'</span>,</span><br><span class="line">                        <span class="string">"overflow"</span>: <span class="string">'hidden'</span>,</span><br><span class="line">                        <span class="string">"max-width"</span>:<span class="string">"200px"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">//鼠标悬浮时显示全称</span></span><br><span class="line">            formatter:<span class="function"><span class="keyword">function</span>(<span class="params">value,row,index,field</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">'span'</span>)</span><br><span class="line">                span.setAttribute(<span class="string">'title'</span>,value)</span><br><span class="line">                span.innerHTML = value</span><br><span class="line">                <span class="keyword">return</span> span.outerHTML</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="comment">//操作按钮</span></span><br><span class="line">            field: <span class="string">'Button'</span>,</span><br><span class="line">            title: <span class="string">'操作'</span>,</span><br><span class="line">            events: operateEvents,</span><br><span class="line">            formatter: AddFunctionAlty,</span><br><span class="line">        &#125;, </span><br><span class="line">        ]</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> InitTable;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h4><p>在这里我需要对表格的数据进行读取，我设计了一个详情按钮，在这里添加事件处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意这里的data-toggle和data-target属性</span></span><br><span class="line"><span class="comment">//data-target必须与模态框的id相匹配</span></span><br><span class="line"><span class="comment">//data-toggle则是说明数据展示组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">AddFunctionAlty</span>(<span class="params">value,row,index</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>[</span><br><span class="line">        <span class="string">'&lt;button id="TableDetail" type="button" class="btn btn-info" data-toggle="modal" data-target="#detailModal"&gt;详 情&lt;/button&gt;'</span></span><br><span class="line">    	].join(<span class="string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里是设计一个全局变量，在翻页时候还需要这个变量</span></span><br><span class="line"><span class="keyword">var</span> bcNum = <span class="number">0</span></span><br><span class="line"><span class="built_in">window</span>.operateEvents = &#123;</span><br><span class="line">    <span class="string">"click #TableDetail"</span>:<span class="function"><span class="keyword">function</span>(<span class="params">e,value,row,index</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//将js变量添加到html中的方式！！！</span></span><br><span class="line">        $(<span class="string">"#td1"</span>).text(bc[index].name);</span><br><span class="line">        $(<span class="string">"#td2"</span>).text(bc[index].时间戳);</span><br><span class="line">        $(<span class="string">"#td3"</span>).text(bc[index].交易码);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里主要是通过获取index索引，获取json数组该下标的json数据。另外注意，这里使用<code>$(&quot;#td1&quot;).text(bc[index].name)</code> 这种方式将js里的变量注入到html&lt;td&gt;标签中，后面会再次说明。</p>
+<h3 id="Modal"><a href="#Modal" class="headerlink" title="Modal"></a>Modal</h3><p>与官网上的代码几乎一致。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal fade"</span> <span class="attr">id</span>=<span class="string">"detailModal"</span> <span class="attr">tabindex</span>=<span class="string">"-1"</span> <span class="attr">role</span>=<span class="string">"dialog"</span> <span class="attr">aria-labelledby</span>=<span class="string">"myModalLabel"</span> 	<span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-dialog"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-content"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-header"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"close"</span> <span class="attr">data-dismiss</span>=<span class="string">"modal"</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span>&amp;times;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">"modal-title"</span> <span class="attr">id</span>=<span class="string">"myModalLabel"</span>&gt;</span>详细信息<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-body"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"fm"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-hover table-bordered"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">th</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">'td1'</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">th</span>&gt;</span>yyy<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">'td2'</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">th</span>&gt;</span>zzz<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">'td3'</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modal-footer"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pagination"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"pervious"</span> <span class="attr">class</span>=<span class="string">"page-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"page-link"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"next"</span><span class="attr">class</span>=<span class="string">"page-item"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"page-link"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- /.modal-content --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- /.modal --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>模态框这里我在里面使用了表格form而不是使用table，是因为点击“详情”按钮之后就可以获取单个json数据，而在这使用bootstrap-table则显得过于繁杂了。<strong>这里的&lt;td&gt;标签通过添加id属性使得可以将js变量注入。</strong><code>$(&#39;#id&#39;).text(variables)</code></p>
+<h4 id="翻页"><a href="#翻页" class="headerlink" title="翻页"></a>翻页</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> $(<span class="string">"#pervious"</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     bcNum -= <span class="number">1</span></span><br><span class="line">     <span class="keyword">if</span>(bcNum &lt; <span class="number">0</span>)&#123;</span><br><span class="line">         <span class="keyword">return</span> bcNum += <span class="number">1</span> </span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         $(<span class="string">"#td1"</span>).text(bc[bcNum].name);</span><br><span class="line">         $(<span class="string">"#td2"</span>).text(bc[bcNum].时间戳);</span><br><span class="line">         $(<span class="string">"#td3"</span>).text(bc[bcNum].交易码);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;)</span><br><span class="line">$(<span class="string">"#next"</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    bcNum += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span>(bcNum &gt; bc.length - <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> bcNum -= <span class="number">1</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $(<span class="string">"#td1"</span>).text(bc[bcNum].name);</span><br><span class="line">        $(<span class="string">"#td2"</span>).text(bc[bcNum].时间戳);</span><br><span class="line">        $(<span class="string">"#td3"</span>).text(bc[bcNum].交易码);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>自己稍微做了一下翻页，不知是否繁琐，运行倒是没啥问题。通过index赋予全局变量，在click事件中进行索引的变换。</p>
+<h3 id="echarts"><a href="#echarts" class="headerlink" title="echarts"></a>echarts</h3><p>为了实现饼图，就使用了echarts插件，官网的内容很全，api、各项配置均可查，非常详细。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myPie = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'pie'</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    title : &#123;</span><br><span class="line">        text: <span class="string">'今日类型分布'</span>,</span><br><span class="line">        x: <span class="string">'left'</span>,<span class="comment">//标题出现的相对方位</span></span><br><span class="line">        padding: <span class="number">20</span></span><br><span class="line">    &#125;,</span><br><span class="line">    tooltip: &#123; <span class="comment">//鼠标悬浮</span></span><br><span class="line">        trigger: <span class="string">'item'</span>, <span class="comment">// 显示该扇形名称</span></span><br><span class="line">        formatter: <span class="string">"&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125; (&#123;d&#125;%)"</span> <span class="comment">//显示的数据格式</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series : [</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">'访问来源'</span>,</span><br><span class="line">            type: <span class="string">'pie'</span>,</span><br><span class="line">            radius : <span class="string">'55%'</span>,<span class="comment">//半径</span></span><br><span class="line">            center: [<span class="string">'40%'</span>, <span class="string">'60%'</span>],<span class="comment">//圆心在容器中的相对位置 </span></span><br><span class="line">            data:pieJSON,<span class="comment">//数据</span></span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">                emphasis: &#123;</span><br><span class="line">                    shadowBlur: <span class="number">10</span>,</span><br><span class="line">                    shadowOffsetX: <span class="number">0</span>,</span><br><span class="line">                    shadowColor: <span class="string">'rgba(0, 0, 0, 0.5)'</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//为了和表格同时出现，可以将数据加载放在查询函数里</span></span><br><span class="line">myPie.setOption(option);</span><br></pre></td></tr></table></figure>
+
+<p><strong>ps：以上代码最后全部放入success函数中。</strong></p>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p><strong>ps：和后台对接后，这里的修改是最多的，也是整个项目的重点。由于修改的部分较多，下面列项说明。</strong></p>
+<ul>
+<li><p>由于我们需要在点击“详情”后，将从后端获取的JSON数据载入到模态框中，所以我们需要创建bc变量存储后端传来的jsonData。</p>
+</li>
+<li><p>为了保证数据的稳定性，不让其变化，需要将ajax配置为同步传输，<code>sync:false</code>。</p>
+</li>
+<li><p>data配置项将以json形式传递，但dataType却需要改成’text’。</p>
+</li>
+<li><p>bootstrap Table需要以<code>$(&#39;#table&#39;).bootstrapTable(&#39;load&#39;, jsonData);</code>这种形式加载，否则表格渲染不出来。</p>
+</li>
+<li><p>bootstrap Table前端分页的话，后端的数据格式请参考<a href="#bt">Bootstrap Table</a>，<code>bc= jsonData.rows</code>这个能直接获取rows下的jsonArray。</p>
+</li>
+<li><p>echarts饼图的数据需要<code>parseJSON()</code>函数解析，否则图表数据显示不正常。echarts中data数据格式如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name:xxx,value:xxx</span><br><span class="line">    name:xxx,value:xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>谨记：name中不要包含数字！！！</p>
+</li>
+<li><p>为了当数据为0时，饼图不显示该数据（包括标识线及文字），在后端给value赋值时，将<code>value = 0</code>转换成<code>value = null</code>。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里还是创建全局变量，以供后面使用</span></span><br><span class="line"><span class="keyword">var</span> bc = <span class="literal">null</span></span><br><span class="line"><span class="keyword">var</span> pieJSON = <span class="literal">null</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//获取日历控件日期</span></span><br><span class="line">    <span class="keyword">var</span> date = $(<span class="string">'#datetimepicker1'</span>).find(<span class="string">'input'</span>).val()</span><br><span class="line">    <span class="comment">//查询</span></span><br><span class="line">    $(<span class="string">"#searchButton"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	   <span class="comment">//在点击查询后，接收数据成功后再进行表格和饼图的初始化</span></span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            sync:<span class="literal">false</span>,<span class="comment">//为了将后台传过来的数据作为全局变量存储，需要使用同步传输</span></span><br><span class="line">            url: <span class="string">"/blockDate"</span>,</span><br><span class="line">            data: &#123;<span class="attr">date</span>:date&#125;,<span class="comment">//前者是后端接收参数名，后者是变量</span></span><br><span class="line">            success(jsonData)&#123;</span><br><span class="line">                <span class="keyword">if</span>(jsonData == <span class="literal">null</span>)&#123;</span><br><span class="line">                    alert(<span class="string">"该日暂无数据！"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                bc = jsonData.rows<span class="comment">//这里涉及到bootstrap table传入的数据格式问题</span></span><br><span class="line">                InitTable(jsonData)</span><br><span class="line">                $(<span class="string">'#table'</span>).bootstrapTable(<span class="string">'load'</span>, jsonData);<span class="comment">//没和后端对接前，没用这种方法加载表格</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url: <span class="string">"/pieData"</span>,</span><br><span class="line">            data: &#123;<span class="attr">date</span>:date&#125;,<span class="comment">//同上</span></span><br><span class="line">            dataType: <span class="string">"text"</span>,<span class="comment">//设置为JSON无法传入后端</span></span><br><span class="line">            success(pie)</span><br><span class="line">            	<span class="comment">//pieJSON = pie;//未接入后端可直接赋值</span></span><br><span class="line">                pieJSON = $.parseJSON(pie);<span class="comment">//接入后端后需要parseJSON解析json数据</span></span><br><span class="line">            	.......<span class="comment">//这里放入饼图的代码</span></span><br><span class="line">                myPie.setOption(option);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)     </span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这里点击后，创建两个ajax我之前是没有想到的，还是挺巧妙的。这样可以在后台通过两个方法去查询两个不同的json数组返回前端。</p>
+<h3 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><p>后台我就贴一下和ajax相关的代码，里面具体的方法就不详细说了。饼图的类似，以上。</p>
+<p><strong>ps：此前代码几乎完全错误，在此修正。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/blockDate"</span>,method = RequestMethod.POST)</span><br><span class="line">JSONArray jsonArray = <span class="keyword">new</span> JSONArray();</span><br><span class="line"><span class="function"><span class="keyword">public</span> JSONObject <span class="title">QueryDate</span><span class="params">(HttpServletRequest request,HttpServletResponse response)</span></span>&#123;</span><br><span class="line">    <span class="comment">//获取date参数</span></span><br><span class="line">    String date=request.getParameter(<span class="string">"date"</span>);</span><br><span class="line">    </span><br><span class="line">    JSONObject jsoc=<span class="keyword">new</span> JSONObject();</span><br><span class="line">    jsoc.put(<span class="string">"total"</span>, jsonArray.size());</span><br><span class="line">    jsoc.put(<span class="string">"rows"</span>, jsonArray.toString());</span><br><span class="line">    <span class="keyword">return</span> jsoc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@RequestMapping注解处理地址请求的映射，value属性指向地址，我这使用了post方法。<del>@RequestParam是接收前台传入的参数。</del>最后是使用了request来获取前台传入的参数。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次项目摸了很久，<del>最后几天一鼓作气就完成了。这次项目的内容还是大多数来自于前端，对于前端我了解的还是比较少，上手还是比较慢，这次用了JQuery感觉还是很不错的，前端倒也是蛮有趣的。</del>还得继续加油！~</p>
+<p>测试到上线花了将近一周的时间，改了诸多bug，当前后端交互的时候，还是很容易出现问题的，着实不易！辛苦啦~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bruce0hh
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.bruce0hh.top/2019/12/25/Bootstrap-SpringBoot项目总结/" title="Bootstrap+SpringBoot项目总结">http://www.bruce0hh.top/2019/12/25/Bootstrap-SpringBoot项目总结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bootstrap/" rel="tag"># bootstrap</a>
+          
+            <a href="/tags/springboot/" rel="tag"># springboot</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/26/最小的k个数/" rel="next" title="最小的k个数">
+                <i class="fa fa-chevron-left"></i> 最小的k个数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/05/python爬虫基础/" rel="prev" title="python爬虫基础">
+                python爬虫基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Bruce0hh">
+            
+              <p class="site-author-name" itemprop="name">Bruce0hh</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Bruce0hh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bruce0hh@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目需求"><span class="nav-number">1.</span> <span class="nav-text">项目需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目成果"><span class="nav-number">2.</span> <span class="nav-text">项目成果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目说明"><span class="nav-number">3.</span> <span class="nav-text">项目说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目思路"><span class="nav-number">3.1.</span> <span class="nav-text">项目思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#表格"><span class="nav-number">3.1.1.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饼图"><span class="nav-number">3.1.2.</span> <span class="nav-text">饼图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bootstrap-datetimepicker"><span class="nav-number">3.2.</span> <span class="nav-text">Bootstrap datetimepicker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bootstrap-Table"><span class="nav-number">3.3.</span> <span class="nav-text">Bootstrap Table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件处理"><span class="nav-number">3.3.1.</span> <span class="nav-text">事件处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modal"><span class="nav-number">3.4.</span> <span class="nav-text">Modal</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#翻页"><span class="nav-number">3.4.1.</span> <span class="nav-text">翻页</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#echarts"><span class="nav-number">3.5.</span> <span class="nav-text">echarts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-number">3.6.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot"><span class="nav-number">3.7.</span> <span class="nav-text">SpringBoot</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bruce0hh</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/rem.model.json"},"display":{"position":"right","width":280,"height":335},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="springboot,mybatis,mysql,shiro,druid,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spring Boot + MyBatis + Druid + Shiro实例 工具：IDEA2020.1.4+Navicat+postman">
+<meta name="keywords" content="springboot,mybatis,mysql,shiro,druid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot整合Demo实例">
+<meta property="og:url" content="http://www.bruce0hh.top/2020/09/01/SpringBoot学习之旅/index.html">
+<meta property="og:site_name" content="Bruce0hh个人博客">
+<meta property="og:description" content="Spring Boot + MyBatis + Druid + Shiro实例 工具：IDEA2020.1.4+Navicat+postman">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/28/dTZxKS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/01/dxLlz8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/01/dxLKit.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/01/dxLQRf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/01/dxL8sg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/01/dxLGLQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/01/dxLtds.png">
+<meta property="og:updated_time" content="2020-09-01T13:58:27.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot整合Demo实例">
+<meta name="twitter:description" content="Spring Boot + MyBatis + Druid + Shiro实例 工具：IDEA2020.1.4+Navicat+postman">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/08/28/dTZxKS.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.bruce0hh.top/2020/09/01/SpringBoot学习之旅/">
+
+
+
+
+
+  <title>SpringBoot整合Demo实例 | Bruce0hh个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bruce0hh个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.bruce0hh.top/2020/09/01/SpringBoot学习之旅/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bruce0hh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bruce0hh个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot整合Demo实例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-01T20:37:01+08:00">
+                2020-09-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-01T21:58:27+08:00">
+                2020-09-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/SpringBoot/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringBoot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Spring Boot + MyBatis + Druid + Shiro实例</p>
+<p>工具：IDEA2020.1.4+Navicat+postman</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="项目架构图"><a href="#项目架构图" class="headerlink" title="项目架构图"></a>项目架构图</h2><p>​                                                                <a href="https://imgchr.com/i/dTZxKS" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/08/28/dTZxKS.png" alt="dTZxKS.png" style="zoom: 33%;"></a></p>
+<ul>
+<li><strong>common</strong>：这里存放了两个类CommoMessage和CommonResult。Message主要作为消息的实体，Result则为静态类，主要用于返回结果的调用。</li>
+<li><strong>dao</strong>：存储对象的实体。</li>
+<li><strong>mapper</strong>：存储调用动态SQL语句的接口。</li>
+<li><strong>service</strong>：调用mapper接口，为Controller对象服务。</li>
+<li><strong>controller</strong>：实现对前端参数的接收，并与前端的交互。</li>
+<li><strong>mapping</strong>：自动生成的mgb文件。</li>
+<li><strong>templates</strong>：存储对应的前端html文件。</li>
+<li><strong>static</strong>：存放js、css、图片等静态资源文件。</li>
+<li><strong>application.yml</strong>：配置项目所使用的模块。</li>
+</ul>
+<h2 id="项目思路及流程"><a href="#项目思路及流程" class="headerlink" title="项目思路及流程"></a>项目思路及流程</h2><h3 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.springboot.demo.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> userId;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getUserId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserId</span><span class="params">(<span class="keyword">long</span> userId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userId = userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实体类可以自己定义，也可以自动生成。mapping中自动生成的mapper.xml也是从该处自动生成。</p>
+<p><a href="https://imgchr.com/i/dxLlz8" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/09/01/dxLlz8.png" alt="dxLlz8.png" style="zoom:33%;"></a></p>
+<h2 id="application-yml"><a href="#application-yml" class="headerlink" title="application.yml"></a>application.yml</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  datasource:</span></span><br><span class="line"><span class="attr">    driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">jdbc:mysql://127.0.0.1:3306/user?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">  thymeleaf:</span></span><br><span class="line"><span class="attr">    prefix:</span> <span class="attr">classpath:/templates/</span></span><br><span class="line"><span class="attr">    suffix:</span> <span class="string">.html</span></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line"><span class="attr">  type-aliases-package:</span> <span class="string">com.springboot.demo.dao</span></span><br><span class="line"><span class="attr">  mapper-locations:</span> <span class="attr">classpath:mapping/*Mapper.xml</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+
+<p>配置spring中所使用到的数据源，mybatis映射的实体类所在位置，以及mapper文件所在的位置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.springboot.demo.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PageController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 首页</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/index"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"index"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若不配置thymeleaf，templates中的html文件则不会显示，而显示”index”字符。</p>
+<p>而在templates目录下所有的页面，只能通过<strong>@Controller</strong>跳转。</p>
+<h3 id="mapping"><a href="#mapping" class="headerlink" title="mapping"></a>mapping</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--该处对应映射的mapper接口--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.springboot.demo.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--对应返回的实体类的映射格式--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"BaseResultMap"</span> <span class="attr">type</span>=<span class="string">"com.springboot.demo.dao.User"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> <span class="attr">property</span>=<span class="string">"userId"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"username"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">property</span>=<span class="string">"username"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"password"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">property</span>=<span class="string">"password"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"Base_Column_List"</span>&gt;</span></span><br><span class="line">    id, username, `password`</span><br><span class="line">  <span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectAllUsers"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span>&gt;</span></span><br><span class="line">    select * from user</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"login"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span>&gt;</span></span><br><span class="line">    select * from user where username = #&#123;username&#125; and password = #&#123;password&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--id==&gt;mapper接口的方法，parmeterType==&gt;接收参数类型，resulMap==&gt;返回数据的映射格式--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectByPrimaryKey"</span> <span class="attr">parameterType</span>=<span class="string">"java.lang.Integer"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span>&gt;</span></span><br><span class="line">    select </span><br><span class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"Base_Column_List"</span> /&gt;</span></span><br><span class="line">    from user</span><br><span class="line">    where id = #&#123;id,jdbcType=INTEGER&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>mybatis-generator自动生成，用于处理数据库中的数据，需要使用到别的SQL也可自行添加。</p>
+<h3 id="mapper"><a href="#mapper" class="headerlink" title="mapper"></a>mapper</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">User <span class="title">login</span><span class="params">(String username, String password)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;User&gt; <span class="title">selectAllUsers</span><span class="params">()</span></span>;</span><br><span class="line">   </span><br><span class="line">    <span class="function">User <span class="title">selectByPrimaryKey</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mybatis-generator自动生成，每个方法与Mapper.xml中的id一一对应。</p>
+<h3 id="service"><a href="#service" class="headerlink" title="service"></a>service</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>(value = <span class="string">"userService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImp</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">selectAllUsers</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.selectAllUsers();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">login</span><span class="params">(String username, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.login(username, password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用mapper中的方法，需要哪个就调用哪个。</p>
+<p>必须添加<code>@Service</code>注解，否则controller找不到注入的bean。</p>
+<p><code>@Autowired</code> 自动注入装配bean。</p>
+<h3 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/all"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> CommonMessage <span class="title">selectAll</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        CommonMessage&lt;User&gt; msg = <span class="keyword">new</span> CommonMessage&lt;&gt;();</span><br><span class="line">        List&lt;User&gt; user = userService.selectAllUsers();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(user == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> CommonResult.error(<span class="number">400</span>,<span class="string">"出现异常"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(user.toString());</span><br><span class="line">        <span class="keyword">return</span> CommonResult.success();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/login"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> CommonMessage <span class="title">login</span><span class="params">(@RequestParam(<span class="string">"username"</span>)</span> String name, @<span class="title">RequestParam</span><span class="params">(<span class="string">"password"</span>)</span> String password, @RequestHeader String token)</span>&#123;</span><br><span class="line"></span><br><span class="line">        User user1 = userService.login(name, password);</span><br><span class="line">        <span class="keyword">if</span>(user1 == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> CommonResult.error(<span class="number">500</span>,<span class="string">"账号或密码错误"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> CommonResult.success(token);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>@Controller</code>：返回页面；@RequestMapping：返回字符串对象。</p>
+<p><code>@RequestMapping</code>：设置访问路径；<code>@RequestParam(“param”)</code>：设置接收参数及其类型；<code>@RequestHeader</code>：设置请求头部所传入的参数(通常为token)。</p>
+<p><code>@GetMapping</code>：方法为GET的RequestMapping；<code>@PostMapping</code>：方法为POST的RequestMapping。</p>
+</blockquote>
+<h3 id="common"><a href="#common" class="headerlink" title="common"></a>common</h3><ul>
+<li><strong>CommonMessage.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommonMessage</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer code;</span><br><span class="line">    <span class="keyword">private</span> String msg;</span><br><span class="line">    <span class="keyword">private</span> T data;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCode</span><span class="params">(Integer code)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMsg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMsg</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>CommonResult.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommonResult</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CommonMessage&lt;Object&gt; <span class="title">success</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">        CommonMessage&lt;Object&gt; msg = <span class="keyword">new</span> CommonMessage&lt;&gt;();</span><br><span class="line">        msg.setCode(<span class="number">200</span>);</span><br><span class="line">        msg.setMsg(<span class="string">"请求成功"</span>);</span><br><span class="line">        msg.setData(object);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CommonMessage&lt;Object&gt; <span class="title">success</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> success(<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CommonMessage <span class="title">error</span><span class="params">(Integer code, String resultMsg)</span></span>&#123;</span><br><span class="line">        CommonMessage msg = <span class="keyword">new</span> CommonMessage();</span><br><span class="line">        msg.setCode(code);</span><br><span class="line">        msg.setMsg(resultMsg);</span><br><span class="line">        <span class="keyword">return</span> msg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DemoApplication"><a href="#DemoApplication" class="headerlink" title="DemoApplication"></a>DemoApplication</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.springboot.demo.mapper"</span>)</span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>@MapperScan</code>：使mapper接口生效，否则找不到mapper中使用的方法。如果mapper层中加入<code>@Mapper</code>注解的话，这里就不需要加<code>@MapperScan</code>。</li>
+</ul>
+<h2 id="项目演示"><a href="#项目演示" class="headerlink" title="项目演示"></a>项目演示</h2><p><img src="https://s1.ax1x.com/2020/09/01/dxLKit.png" alt="dxLKit.png"></p>
+<h2 id="整合Druid"><a href="#整合Druid" class="headerlink" title="整合Druid"></a>整合Druid</h2><h3 id="添加druid依赖"><a href="#添加druid依赖" class="headerlink" title="添加druid依赖"></a>添加druid依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.23<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：添加的是<code>druid-spring-boot-starter</code>，而不是<code>druid-core</code>，否则后面的yml配置文件无法获取druid数据源。</p>
+<h3 id="yml中添加druid配置"><a href="#yml中添加druid配置" class="headerlink" title="yml中添加druid配置"></a>yml中添加druid配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  datasource:</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">root</span></span><br><span class="line">    <span class="comment">#serverTimezone=UTC解决时区的报错</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">jdbc:mysql://localhost:3306/user?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8</span></span><br><span class="line"><span class="attr">    driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="comment">#自定义数据源</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">    <span class="comment">#Spring Boot 默认是不注入这些属性值的，需要自己绑定</span></span><br><span class="line">    <span class="comment">#druid 数据源专有配置,使用该配置需要导入druid-spring-boot-starter依赖</span></span><br><span class="line"><span class="attr">    initial-size:</span> <span class="number">5</span> <span class="comment">#初始化连接数</span></span><br><span class="line"><span class="attr">    minIdle:</span> <span class="number">5</span> <span class="comment">#回收空闲连接时，将保证至少有minIdle个连接.建议与初始化值相同</span></span><br><span class="line"><span class="attr">    maxActive:</span> <span class="number">20</span> <span class="comment">#连接池中最多支持多少个活动会话</span></span><br><span class="line">    <span class="comment">#程序向连接池中请求连接时,超过maxWait的值后，认为本次请求失败，即连接池没有可用连接，单位毫秒，设置-1时表示无限等待</span></span><br><span class="line"><span class="attr">    maxWait:</span> <span class="number">60000</span></span><br><span class="line">    <span class="comment">#检查空闲连接的频率，单位毫秒, 非正整数时表示不进行检查</span></span><br><span class="line"><span class="attr">    timeBetweenEvictionRunsMillis:</span> <span class="number">60000</span> <span class="comment">#检查空闲连接的频率，单位毫秒, 非正整数时表示不进行检查</span></span><br><span class="line">    <span class="comment">#池中某个连接的空闲时长达到 N 毫秒后, 连接池在下次检查空闲连接时，将回收该连接,要小于防火墙超时设置</span></span><br><span class="line"><span class="attr">    minEvictableIdleTimeMillis:</span> <span class="number">300000</span></span><br><span class="line">    <span class="comment">#检查池中的连接是否仍可用的 SQL 语句,druid会连接到数据库执行该SQL, 如果正常返回，则表示连接可用，否则表示连接不可用</span></span><br><span class="line"><span class="attr">    validationQuery:</span> <span class="string">SELECT</span> <span class="number">1</span> <span class="string">FROM</span> <span class="string">DUAL</span></span><br><span class="line"><span class="attr">    testWhileIdle:</span> <span class="literal">true</span> <span class="comment">#当程序请求连接，池在分配连接时，是否先检查该连接是否有效。(高效)</span></span><br><span class="line"><span class="attr">    testOnBorrow:</span> <span class="literal">false</span> <span class="comment">#程序 申请 连接时,进行连接有效性检查（低效，影响性能）</span></span><br><span class="line"><span class="attr">    testOnReturn:</span> <span class="literal">false</span> <span class="comment">#程序 返还 连接时,进行连接有效性检查（低效，影响性能）</span></span><br><span class="line">    <span class="comment">#缓存通过以下两个方法发起的SQL:</span></span><br><span class="line">    <span class="comment">#public PreparedStatement prepareStatement(String sql)</span></span><br><span class="line">    <span class="comment">#public PreparedStatement prepareStatement(String sql,int resultSetType, int resultSetConcurrency)</span></span><br><span class="line"><span class="attr">    poolPreparedStatements:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment">#配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入</span></span><br><span class="line"><span class="attr">    filters:</span> <span class="string">stat,wall,log4j</span></span><br><span class="line">    <span class="comment">#如果允许时报错 java.lang.ClassNotFoundException: org.apache.log4j.Priority 则导入log4j依赖</span></span><br><span class="line"><span class="attr">    maxPoolPreparedStatementPerConnectionSize:</span> <span class="number">20</span> <span class="comment">#每个连接最多缓存多少个SQL</span></span><br><span class="line"><span class="attr">    useGlobalDataSourceStat:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment">#通过connectionProperties打开mergeSql和慢查询功能</span></span><br><span class="line"><span class="attr">    connectionProperties:</span> <span class="string">druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500</span></span><br></pre></td></tr></table></figure>
+
+<p>如果该yml文件不可初始化druid，可以在datasource后面加上一级druid。</p>
+<img src="https://s1.ax1x.com/2020/09/01/dxLQRf.png" alt="dxLQRf.png" style="zoom:33%;">
+
+<h3 id="覆盖springboot的数据源配置"><a href="#覆盖springboot的数据源配置" class="headerlink" title="覆盖springboot的数据源配置"></a>覆盖springboot的数据源配置</h3><p><strong>DruidConfig.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DruidConfig</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将自定义的 Druid 数据源添加到容器中，不再让 Spring Boot 自动创建</span></span><br><span class="line"><span class="comment">     * 这样做的目的是：绑定全局配置文件中的 druid 数据源属性到 com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="comment">     * 从而让它们生效</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * ConfigurationProperties(prefix = "spring.datasource")：作用就是将 全局配置文件中 前缀为 spring.datasource</span></span><br><span class="line"><span class="comment">     * 的属性值注入到 com.alibaba.druid.pool.DruidDataSource 的同名参数中</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource"</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">druidDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//配置Druid监控管理后台的servlet</span></span><br><span class="line">    <span class="comment">//内置Servlet容器时没有web.xml文件，所以使用springboot的注册servlet的方式</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletRegistrationBean <span class="title">statViewServlet</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ServletRegistrationBean bean = <span class="keyword">new</span> ServletRegistrationBean(<span class="keyword">new</span> StatViewServlet(), <span class="string">"/druid/*"</span>);</span><br><span class="line">        <span class="comment">//这些参数可以在com.alibaba.druid.support.http.StatViewServlet的父类com.alibaba.druid.support.http.ResourceServlet 中找到</span></span><br><span class="line">        Map&lt;String,String&gt; initParams = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        initParams.put(<span class="string">"loginUsername"</span>,<span class="string">"admin"</span>);<span class="comment">//后台管理界面的登录账号</span></span><br><span class="line">        initParams.put(<span class="string">"loginPassword"</span>,<span class="string">"admin"</span>);<span class="comment">//后台管理界面的登录密码</span></span><br><span class="line">        <span class="comment">//后台允许谁可以访问</span></span><br><span class="line">        <span class="comment">//initParams.put("allow","localhost");//表示只有本机可以访问</span></span><br><span class="line">        initParams.put(<span class="string">"allow"</span>,<span class="string">""</span>);<span class="comment">//为空或者为null时，表示允许所有访问</span></span><br><span class="line">        <span class="comment">//deny:Druid后台拒绝访问谁</span></span><br><span class="line">        initParams.put(<span class="string">"dz"</span>,<span class="string">"192.168.1.20"</span>);<span class="comment">//表示禁止此ip访问</span></span><br><span class="line">        <span class="comment">//设置初始化参数</span></span><br><span class="line">        bean.setInitParameters(initParams);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用测试类测试初始化是否成功，druid默认初始化连接数为0，最大连接数为8。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//DI注入数据源</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    DataSource dataSource;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        <span class="comment">//看一下默认数据源</span></span><br><span class="line">        System.out.println(dataSource.getClass());</span><br><span class="line">        <span class="comment">//获取连接</span></span><br><span class="line">        Connection connection = dataSource.getConnection();</span><br><span class="line">        System.out.println(connection);</span><br><span class="line"></span><br><span class="line">        DruidDataSource druidDataSource = (DruidDataSource) dataSource;</span><br><span class="line">        System.out.println(<span class="string">"druidDataSource 数据源最大连接数"</span>+druidDataSource.getMaxActive());</span><br><span class="line">        System.out.println(<span class="string">"druidDataSource 数据源初始化连接数"</span>+druidDataSource.getInitialSize());</span><br><span class="line">        <span class="comment">//关闭连接</span></span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>测试结果</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/09/01/dxL8sg.png" alt="dxL8sg.png"></p>
+<ul>
+<li>打开<code>localhost:8080/druid/login.html</code>测试（查看数据源前先完成一次数据库操作）。</li>
+</ul>
+<h2 id="整合Shiro"><a href="#整合Shiro" class="headerlink" title="整合Shiro"></a>整合Shiro</h2><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--shiro 注解会用到 aop--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Realm配置"><a href="#Realm配置" class="headerlink" title="Realm配置"></a>Realm配置</h3><p><strong>MyshiroRealm.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyShiroRealm</span> <span class="keyword">extends</span> <span class="title">AuthorizingRealm</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RoleService roleService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    PermissionService permissionService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 权限认证</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> principalCollection</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthorizationInfo <span class="title">doGetAuthorizationInfo</span><span class="params">(PrincipalCollection principalCollection)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"执行权限处理"</span>);</span><br><span class="line">        SimpleAuthorizationInfo simpleAuthorizationInfo = <span class="keyword">new</span> SimpleAuthorizationInfo();</span><br><span class="line">        <span class="comment">// HttpServletRequest request = (HttpServletRequest) ((WebSubject) SecurityUtils</span></span><br><span class="line">        <span class="comment">// .getSubject()).getServletRequest();//这个可以用来获取在登录的时候提交的其他额外的参数信息</span></span><br><span class="line">        String username = (String)principalCollection.getPrimaryPrincipal();<span class="comment">//获取登录名</span></span><br><span class="line">        User user = userService.selectUserByName(username);<span class="comment">//查找该用户信息</span></span><br><span class="line">        <span class="comment">//角色</span></span><br><span class="line">        Set&lt;String&gt; roles = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">        Role role = roleService.getRoleByUserName(username);<span class="comment">//通过用户名获取角色</span></span><br><span class="line">        roles.add(role.getRoleName());</span><br><span class="line">        simpleAuthorizationInfo.setRoles(roles);</span><br><span class="line">        <span class="comment">//权限</span></span><br><span class="line">        Set&lt;String&gt; permissions = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">        List&lt;Permission&gt; permissionList = permissionService.getPermissionByRoleId(role.getRoleId());</span><br><span class="line">        <span class="keyword">for</span> (Permission permission: permissionList) &#123;<span class="comment">//将通过roleId查到的所有权限（permission）添加到set里面</span></span><br><span class="line">            permissions.add(permission.getPermissionName());</span><br><span class="line">        &#125;</span><br><span class="line">        simpleAuthorizationInfo.setStringPermissions(permissions);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> simpleAuthorizationInfo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 身份认证</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> authenticationToken</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> AuthenticationException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthenticationInfo <span class="title">doGetAuthenticationInfo</span><span class="params">(AuthenticationToken authenticationToken)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"执行身份认证"</span>);</span><br><span class="line">        Subject subject = SecurityUtils.getSubject();</span><br><span class="line">        String username = (String) authenticationToken.getPrincipal();<span class="comment">//通过getPrincipal方式获取用户名</span></span><br><span class="line">        UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;<span class="comment">//通过UPT方式获取token</span></span><br><span class="line"></span><br><span class="line">        User user = userService.selectUserByName(token.getUsername());</span><br><span class="line">        <span class="keyword">if</span>(user == <span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">"没有此账号"</span>);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UnknownAccountException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//密码判断处理</span></span><br><span class="line">        String password = <span class="keyword">new</span> String((<span class="keyword">char</span>[]) authenticationToken.getCredentials());<span class="comment">//获取密码</span></span><br><span class="line">        String inpass = (<span class="keyword">new</span> Md5Hash(password, user.getUsername())).toString();</span><br><span class="line">        <span class="keyword">if</span> (!user.getPassword().equals(inpass)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IncorrectCredentialsException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配</span></span><br><span class="line">        <span class="comment">//username &lt;==&gt; token.getUsername();</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SimpleAuthenticationInfo(username, user.getPassword(),</span><br><span class="line">                ByteSource.Util.bytes(username), getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ShiroConfig配置"><a href="#ShiroConfig配置" class="headerlink" title="ShiroConfig配置"></a>ShiroConfig配置</h3><p><strong>ShiroConfig.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShiroConfig</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(ShiroConfiguration.class);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Shiro的web过滤器Factory</span></span><br><span class="line"><span class="comment">     * shiroFilter</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span>(name = <span class="string">"shiroFilter"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ShiroFilterFactoryBean <span class="title">shiroFilterFactoryBean</span><span class="params">(SecurityManager securityManager)</span></span>&#123;</span><br><span class="line">        ShiroFilterFactoryBean shiroFilterFactoryBean = <span class="keyword">new</span> ShiroFilterFactoryBean();</span><br><span class="line">        <span class="comment">//shiro核心的安全接口</span></span><br><span class="line">        shiroFilterFactoryBean.setSecurityManager(securityManager);</span><br><span class="line">        <span class="comment">//需要权限的请求，如果没有登录则会跳转到这里设置的url</span></span><br><span class="line">        shiroFilterFactoryBean.setLoginUrl(<span class="string">"/login.html"</span>);</span><br><span class="line">        <span class="comment">//设置登录成功跳转url，一般在登录成功后自己代码设置跳转url，此处基本没用</span></span><br><span class="line">        <span class="comment">//shiroFilterFactoryBean.setSuccessUrl("/main.html");</span></span><br><span class="line">        <span class="comment">//设置无权限跳转界面，一般不生效，一般自定义异常</span></span><br><span class="line">        <span class="comment">//shiroFilterFactoryBean.setUnauthorizedUrl("/error.html");</span></span><br><span class="line">        Map&lt;String, Filter&gt; filterMap = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">        shiroFilterFactoryBean.setFilters(filterMap);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 定义shiro过滤链 Map结构</span></span><br><span class="line"><span class="comment">         * Map中key(xml中是指value值)的第一个'/'代表的路径是相对于HttpServletRequest.getContextPath()的值来的</span></span><br><span class="line"><span class="comment">         * anon：它对应的过滤器里面是空的,什么都没做,这里.do和.jsp后面的*表示参数,比方说login.jsp?main这种</span></span><br><span class="line"><span class="comment">         * authc：该过滤器下的页面必须验证后才能访问,它是Shiro内置的一个拦截器org.apache.shiro.web.filter.authc.</span></span><br><span class="line"><span class="comment">         * FormAuthenticationFilter</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        Map&lt;String, String&gt; filterChainDefinitionMap = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边; authc:所有url都必须认证通过才可以访问;</span></span><br><span class="line"><span class="comment">         * anon:所有url都都可以匿名访问</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/login.html"</span>, <span class="string">"authc"</span>);</span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/login"</span>, <span class="string">"anon"</span>);</span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/js/**"</span>, <span class="string">"anon"</span>);</span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/css/**"</span>, <span class="string">"anon"</span>);</span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/logout"</span>, <span class="string">"logout"</span>);</span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/**"</span>, <span class="string">"authc"</span>);</span><br><span class="line">        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);</span><br><span class="line">        <span class="keyword">return</span> shiroFilterFactoryBean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 权限管理</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">()</span></span>&#123;</span><br><span class="line">        logger.info(<span class="string">"=======================shiro======================="</span>);</span><br><span class="line">        DefaultSecurityManager securityManager = <span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">        securityManager.setRealm(MyShiroRealm());</span><br><span class="line"><span class="comment">//        securityManager.setRememberMeManager(rememberMeManager);</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> securityManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 指定shiro验证用户登录的类为自定义的类</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MyShiroRealm <span class="title">MyShiroRealm</span><span class="params">()</span></span>&#123;</span><br><span class="line">        MyShiroRealm userRealm = <span class="keyword">new</span> MyShiroRealm();</span><br><span class="line">        userRealm.setCredentialsMatcher(hashedCredentialsMatcher());</span><br><span class="line">        <span class="keyword">return</span> userRealm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 凭证匹配器 密码验证</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> hashedCredentialsMatcher</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span>(name = <span class="string">"credentialsMatcher"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> HashedCredentialsMatcher <span class="title">hashedCredentialsMatcher</span><span class="params">()</span></span>&#123;</span><br><span class="line">        HashedCredentialsMatcher hashedCredentialsMatcher = <span class="keyword">new</span> HashedCredentialsMatcher();</span><br><span class="line">        <span class="comment">//散列算法，MD5</span></span><br><span class="line">        hashedCredentialsMatcher.setHashAlgorithmName(<span class="string">"md5"</span>);</span><br><span class="line">        <span class="comment">// 散列的次数，比如散列两次，相当于 md5(md5(""));</span></span><br><span class="line">        hashedCredentialsMatcher.setHashIterations(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">// storedCredentialsHexEncoded默认是true，此时用的是密码加密用的是Hex编码；false时用Base64编码</span></span><br><span class="line">        hashedCredentialsMatcher.setStoredCredentialsHexEncoded(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">return</span> hashedCredentialsMatcher;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 开启Shiro的注解(如<span class="doctag">@RequiresRoles</span>,<span class="doctag">@RequiresPermissions</span>),需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AuthorizationAttributeSourceAdvisor <span class="title">authorizationAttributeSourceAdvisor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = <span class="keyword">new</span> AuthorizationAttributeSourceAdvisor();</span><br><span class="line">        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager());</span><br><span class="line">        <span class="keyword">return</span> authorizationAttributeSourceAdvisor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试（修改之前的login）"><a href="#测试（修改之前的login）" class="headerlink" title="测试（修改之前的login）"></a>测试（修改之前的<strong>login</strong>）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/login"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> CommonMessage <span class="title">login</span><span class="params">(@RequestParam(<span class="string">"username"</span>)</span> String name, @<span class="title">RequestParam</span><span class="params">(<span class="string">"password"</span>)</span> String password)</span>&#123;</span><br><span class="line">        String msg = <span class="string">"登录成功"</span>;</span><br><span class="line">        Subject subject = SecurityUtils.getSubject();</span><br><span class="line">        <span class="comment">//获取username，password，以及开启rememberMe</span></span><br><span class="line">        UsernamePasswordToken token = <span class="keyword">new</span> UsernamePasswordToken(name,password,<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">if</span>(!subject.isAuthenticated())&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                subject.login(token);<span class="comment">// 会触发com.shiro.config.MyShiroRealm的doGetAuthenticationInfo方法</span></span><br><span class="line">                msg = <span class="string">"登录成功"</span>;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (UnknownAccountException e) &#123;</span><br><span class="line">                msg = <span class="string">"用户名错误"</span>;</span><br><span class="line">                <span class="keyword">return</span> CommonResult.error(<span class="number">600</span>,msg);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IncorrectCredentialsException e) &#123;</span><br><span class="line">                msg = <span class="string">"密码错误"</span>;</span><br><span class="line">                <span class="keyword">return</span> CommonResult.error(<span class="number">601</span>,msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> CommonResult.success(msg);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h3><img src="https://s1.ax1x.com/2020/09/01/dxLGLQ.png" alt="dxLGLQ.png" style="zoom:33%;">
+
+<img src="https://s1.ax1x.com/2020/09/01/dxLtds.png" alt="dxLtds.png" style="zoom:33%;">
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bruce0hh
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.bruce0hh.top/2020/09/01/SpringBoot学习之旅/" title="SpringBoot整合Demo实例">http://www.bruce0hh.top/2020/09/01/SpringBoot学习之旅/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/springboot/" rel="tag"># springboot</a>
+          
+            <a href="/tags/mybatis/" rel="tag"># mybatis</a>
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+            <a href="/tags/shiro/" rel="tag"># shiro</a>
+          
+            <a href="/tags/druid/" rel="tag"># druid</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/18/矩形重叠/" rel="next" title="矩形重叠">
+                <i class="fa fa-chevron-left"></i> 矩形重叠
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Bruce0hh">
+            
+              <p class="site-author-name" itemprop="name">Bruce0hh</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Bruce0hh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bruce0hh@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目架构图"><span class="nav-number">1.</span> <span class="nav-text">项目架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目思路及流程"><span class="nav-number">2.</span> <span class="nav-text">项目思路及流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dao"><span class="nav-number">2.1.</span> <span class="nav-text">dao</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application-yml"><span class="nav-number">3.</span> <span class="nav-text">application.yml</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mapping"><span class="nav-number">3.1.</span> <span class="nav-text">mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapper"><span class="nav-number">3.2.</span> <span class="nav-text">mapper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service"><span class="nav-number">3.3.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controller"><span class="nav-number">3.4.</span> <span class="nav-text">controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#common"><span class="nav-number">3.5.</span> <span class="nav-text">common</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DemoApplication"><span class="nav-number">3.6.</span> <span class="nav-text">DemoApplication</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目演示"><span class="nav-number">4.</span> <span class="nav-text">项目演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整合Druid"><span class="nav-number">5.</span> <span class="nav-text">整合Druid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加druid依赖"><span class="nav-number">5.1.</span> <span class="nav-text">添加druid依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yml中添加druid配置"><span class="nav-number">5.2.</span> <span class="nav-text">yml中添加druid配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖springboot的数据源配置"><span class="nav-number">5.3.</span> <span class="nav-text">覆盖springboot的数据源配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整合Shiro"><span class="nav-number">6.</span> <span class="nav-text">整合Shiro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加依赖"><span class="nav-number">6.1.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Realm配置"><span class="nav-number">6.2.</span> <span class="nav-text">Realm配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ShiroConfig配置"><span class="nav-number">6.3.</span> <span class="nav-text">ShiroConfig配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试（修改之前的login）"><span class="nav-number">6.4.</span> <span class="nav-text">测试（修改之前的login）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行结果："><span class="nav-number">6.5.</span> <span class="nav-text">运行结果：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bruce0hh</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/rem.model.json"},"display":{"position":"right","width":280,"height":335},"mobile":{"show":true},"log":false});</script></body>
+</html>
