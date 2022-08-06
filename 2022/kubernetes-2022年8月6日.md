@@ -41,6 +41,14 @@ $ kubectl apply -f nginx.yaml
 
 
 
+### Istio
+
+> Istio最根本的组件，是运行在每一个应用Pod里的Envoy容器里。
+
+<img src="https://cdn.jsdelivr.net/gh/Bruce0hh/pic-bed/20220807013955.png" style="zoom: 50%;" />
+
+
+
 ## API对象
 
 > 在Kubernetes项目中，一个API对象在Etcd里的完整资源路径，是由：Group（API组）、Version（API版本）和Resource（API资源类型）三个部分组成的。
