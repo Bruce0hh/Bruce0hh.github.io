@@ -84,7 +84,3 @@ Istio要做的，就是编写一个用来为Pod“自动注入”Envoy容器的I
 
 **Istio项目的核心，就是由无数个运行在应用Pod中的Envoy容器组成的服务代理网格。这也正是Service Mesh的含义。**
 
-
-
-
-## 
