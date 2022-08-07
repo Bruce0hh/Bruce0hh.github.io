@@ -43,7 +43,7 @@ $ kubectl apply -f nginx.yaml
 
 
 
-### Istio
+## Istio
 
 - Istio最根本的组件，是运行在每一个应用Pod里的Envoy容器里。
 - 而Istio项目，则把这个Envoy代理服务以sidecar容器的方式，运行在了每一个被治理的应用Pod中。
@@ -56,24 +56,35 @@ $ kubectl apply -f nginx.yaml
 
 这样，一个典型的“灰度发布”场景就完成了。比如Istio可以调节这个流量从90%-10%，改到80%-20%，再到50%-50%，最后到0%-100%，就完成了这个灰度发布的过程。
 
-## Dynamic Admission Control
+### Dynamic Admission Control
 
 >  Istio项目使用的，是Kubernetes中的一个功能——`Dynamic Admission Control`。通过这个功能，Istio在Envoy容器的部署或Envoy代理的部署，对用户和应用来说都是无感的。
 
-在Kubernetes项目中，当一个Pod或者任何一个API对象被提交给APIServer之后，总有一些“初始化”性质的工作需要在它们被Kubernetes项目正式处理之前进行。
+- 在Kubernetes项目中，当一个Pod或者任何一个API对象被提交给APIServer之后，总有一些“初始化”性质的工作需要在它们被Kubernetes项目正式处理之前进行。
+
+- 而这个“初始化”操作的实现，借助的是一个叫作Admission的功能。它其实是Kubernetes项目里一组被称为Admission Controller的代码，可以选择性地被编译进APIServer中，在API对象创建之后会被立刻调用到。
+- 如果你现在想要添加一些自己的规则到Admission Controller，就会比较困难。因为，这要求重新编译并重启APIServer。所以Kubernetes项目为用户提供了一种“热插拔”式的Admission机制，就是DAC，也叫做：Initializer。
+
+### Initialize
+
+> 当Pod YAML文件被提交给Kubernetes之后，Istio项目要做的就是，在它对应的API对象里自动加上Envoy容器的配置。
+
+Istio要做的，就是编写一个用来为Pod“自动注入”Envoy容器的Initializer。
+
+1. 首先，Istio会将这个Envoy容器本身的定义，以ConfigMap的方式保存在Kubernetes当中。
+   - Initializer要做的工作，就是把ConfigMap中与Envoy相关的字段，自动添加到用户提交的Pod的API对象里。在Initializer更新用户的Pod对象时候，必须使用PATCH API来完成。而这种PATCH API，正是声明式API最主要的能力。
+2. 接下来，Istio将一个编写好的Initializer，作为一个Pod部署在Kubernetes中。
+   - Initializer的控制器实际就是一个死循环，不断地获取用户新创建的Pod。
+   - 如果这个Pod里面已经添加过Envoy容器，那么就放过这个Pod，进入下一个周期。
+   - 如果没有添加过Envoy容器，它就要进行Initialize操作了。
+3. Kubernetes的API库，为我们提供了一个方法，使得我们可以直接使用新旧两个Pod对象，生成一个`TwoWayMergePatch`。有了这个TwoWayMergePatch之后，Initializer的代码就可以使用这个patch的数据，**调用Kubernetes的client，发起一个PATCH请求**。
+4. 当你在Initializer里完成了要做的操作后，一定要记得将`metadata.initializers.pending`标志清除。
+   - 因为每一个新创建的Pod，都会自动携带了`metadata.initializers.pending`的Metadata信息。
+   - Metadata信息，正是Initializer的控制器判断这个Pod有没有执行过自己所负责的初始化操作的重要依据。
+
+**Istio项目的核心，就是由无数个运行在应用Pod中的Envoy容器组成的服务代理网格。这也正是Service Mesh的含义。**
 
 
 
-## API对象
 
-> 在Kubernetes项目中，一个API对象在Etcd里的完整资源路径，是由：Group（API组）、Version（API版本）和Resource（API资源类型）三个部分组成的。
-
-### API解析流程
-1. Kubernetes会匹配API对象的组。
-2. Kubernetes会进一步匹配到API对象的版本号。
-3. Kubernetes会匹配API对象的资源类型。
-
-### API对象创建流程
-
-
-## 自定义控制器
+## 
