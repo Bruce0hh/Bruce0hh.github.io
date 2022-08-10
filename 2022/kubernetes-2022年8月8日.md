@@ -29,9 +29,14 @@
 4. APIServer会先后进行`Admission()`和`Validation()`操作。
 
    - Admission即包括Admission Controller和Initializer。
-   - Validation则负责验证这个对象里的各个字段是否合法。
+   - Validation则负责验证这个对象里的各个字段是否合法。这个被验证过的API对象，都保存在了APIServer里一个叫做`Registry`的数据结构中。
+
+5. 最后，APIServer会把验证过的API对象转换成用户最初提交的版本，进行序列化操作，并调用Etcd的API把它保存起来。
 
    
 
+## 自定义资源对象
+
+[Custom Resource Definition (CRD)](https://github.com/resouer/k8s-controller-custom-resource)
 
 ## 自定义控制器

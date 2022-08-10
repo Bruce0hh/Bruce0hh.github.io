@@ -39,13 +39,15 @@ mysql> select * from T where ID=10；
 
 - 开始执行的时候，要先判断一下你对这个表 T 有没有执行查询的权限，如果没有，就会返回没有权限的错误。如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口。
 
+![MySQL基础架构](https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220811005253.png)
+
 # 日志系统
 
 ```sql
 mysql> update T set c=c+1 where ID=2;
 ```
 
-
+![](https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220811005456.png)
 
 ## `redo log`
 
