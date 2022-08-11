@@ -39,4 +39,59 @@
 
 [Custom Resource Definition (CRD)](https://github.com/resouer/k8s-controller-custom-resource)
 
-## 自定义控制器
+## 自定义控制器（以Network对象的控制器为例）
+
+> 基于声明式API的业务功能实现，往往需要通过控制器模式来“监视”API对象的变化，然后一次来决定实际要执行的具体工作。
+
+### 编写main函数
+
+```go
+func main() {
+  ...
+  
+  cfg, err := clientcmd.BuildConfigFromFlags(masterURL, kubeconfig)
+  ...
+  kubeClient, err := kubernetes.NewForConfig(cfg)
+  ...
+  networkClient, err := clientset.NewForConfig(cfg)
+  ...
+  
+  networkInformerFactory := informers.NewSharedInformerFactory(networkClient, ...)
+  
+  controller := NewController(kubeClient, networkClient,
+  networkInformerFactory.Samplecrd().V1().Networks())
+  
+  go networkInformerFactory.Start(stopCh)
+ 
+  if err = controller.Run(2, stopCh); err != nil {
+    glog.Fatalf("Error running controller: %s", err.Error())
+  }
+}
+```
+
+
+
+main函数主要通过三步完成了初始化并启动一个自定义控制器的工作。
+
+1. main函数根据用户提供的Master配置（APIServer的地址端口和kubeconfig的路径），创建一个Kubernetes的client和Network对象的client。
+
+   Kubernetes 里所有的Pod都会以Volume的方式自动挂载Kubernetes的默认ServiceAccount。所以，这个控制器就会直接使用默认ServiceAccount数据卷里的授权信息，来访问APIServer。
+
+2. main函数为Network对象创建一个叫做`InformerFactory`的工厂，并使用它生成一个Network对象的Informer，传递给控制器。
+
+3. 启动上述的Informer，然后执行`controller.Run`，启动自定义控制器。
+
+### 自定义控制器的工作原理
+
+![自定义控制器工作流程](https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220812010356.png)
+
+1. 控制器要从Kubernetes的APIServer里获取Network对象。
+   - 这个操作是依靠一个叫做Informer的代码库完成的。Informer与API对象是一一对应的，所以传递给自定义控制器的，是一个Network对象的Informer。
+   - 在创建这个Informer工厂时，需要给它传递一个networkClient。Informer通过这个跟APIServer建立了连接。
+   - 真正负责维护连接的，是Informer所使用的Refector包。使用其中的`ListAndWatch`的方法，来“获取”并“监听”这些Network对象实例的变化。
+
+### 编写自定义控制器的定义
+
+
+
+### 编写控制器里的业务逻辑
