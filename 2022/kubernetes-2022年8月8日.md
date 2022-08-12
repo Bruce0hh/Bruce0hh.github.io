@@ -86,12 +86,54 @@ main函数主要通过三步完成了初始化并启动一个自定义控制器�
 ![自定义控制器工作流程](https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220812010356.png)
 
 1. 控制器要从Kubernetes的APIServer里获取Network对象。
-   - 这个操作是依靠一个叫做Informer的代码库完成的。Informer与API对象是一一对应的，所以传递给自定义控制器的，是一个Network对象的Informer。
-   - 在创建这个Informer工厂时，需要给它传递一个networkClient。Informer通过这个跟APIServer建立了连接。
-   - 真正负责维护连接的，是Informer所使用的Refector包。使用其中的`ListAndWatch`的方法，来“获取”并“监听”这些Network对象实例的变化。
+2. Informer使用client跟APIServer建立了连接。实际上是使用Informer中Reflector的`ListAndWatch`方法，来获取监听Network对象实例的变化。
+3. ListAndWatch方法的含义是：首先，通过APIServer的LIST API获取所有最新版本的API对象；然后通过WATCH API来监听所有这些API对象的变化。
+4. 当APIServer端有新的Network实例被创建、删除或更新，Reflector都会收到事件通知，然后该事件以及对应的API对象，就会被放进这个一个`Delta FIFO Queue`中。
+5. Informer会不断地从DFQ中读取Pop增量。没拿到一个增量，Informer就会判断这个增量的事件类型，然后通过`Indexer`的库把增量中的API对象保存在本地缓存（`Local Store`）中。
 
 ### 编写自定义控制器的定义
 
+```go
+func NewController(
+  kubeclientset kubernetes.Interface,
+  networkclientset clientset.Interface,
+  networkInformer informers.NetworkInformer) *Controller {
+  ...
+  controller := &Controller{
+    kubeclientset:    kubeclientset,
+    networkclientset: networkclientset,
+    networksLister:   networkInformer.Lister(),
+    networksSynced:   networkInformer.Informer().HasSynced,
+    workqueue:        workqueue.NewNamedRateLimitingQueue(...,  "Networks"),
+    ...
+  }
+    networkInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
+    AddFunc: controller.enqueueNetwork,
+    UpdateFunc: func(old, new interface{}) {
+      oldNetwork := old.(*samplecrdv1.Network)
+      newNetwork := new.(*samplecrdv1.Network)
+      if oldNetwork.ResourceVersion == newNetwork.ResourceVersion {
+        return
+      }
+      controller.enqueueNetwork(new)
+    },
+    DeleteFunc: controller.enqueueNetworkForDelete,
+ return controller
+}
+```
 
+1. 设置一个工作队列`Work Queue`，负责同步Infomer和控制循环（`Control Loop`）之间的数据。
+2. 为Informer注册Handler（AddFunc、UpdateFunc和DeleteFunc），分别对应API对象的“添加”“更新”和“删除”事件。具体操作就是将这些事件对应的API对象加入到Work Queue。实际上入队的只是API对象的Key。
+3. 通过监听事件变化，Informer就可以实时地更新本地缓存，并且调用事件的EventHandler了。Informer维护的本地缓存，都会使用最近一次LIST API返回的结果强制更新，从而保证缓存的有效性。这个缓存强制更新的操作就叫作：`resync`。
+4. 最后是控制循环：首先，等待Informer完成一次本地缓存的数据同步操作；然后，直接通过goroutine启动一个或并发多个“无限循环”的任务。
 
 ### 编写控制器里的业务逻辑
+
+1. 首先从工作队列中出队了一个成员，也就是一个Key；
+2. 然后，在syncHandler方法中，尝试从Informer维护的缓存中拿到了它所对应的Network对象。
+3. 如果控制循环从缓存中拿不到这个对象，说明这个Network对象的Key是通过前面的“删除”事件添加到工作队列，应该使用**Neutron的API**，把这个Key对应的Neutron网络从真实的集群里删除掉。
+4. Informer将“期望状态”的API对象缓存到本地；又可以通过Neutron API来查询“实际状态”的API对象。
+5. 有两个状态的对比，就可以决定业务逻辑了。
+
+
+
