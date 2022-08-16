@@ -1,3 +1,5 @@
+[TOC]
+
 # MySQL 的日志系统
 
 ## binlog的写入机制

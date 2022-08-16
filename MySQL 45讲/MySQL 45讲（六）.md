@@ -1,3 +1,5 @@
+[TOC]
+
 # ORDER BY
 
 ```mysql

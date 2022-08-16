@@ -1,3 +1,5 @@
+[TOC]
+
 # 数据库表的空间回收
 
 ## 参数`innodb_file_per_table`

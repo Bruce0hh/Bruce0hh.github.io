@@ -1,3 +1,5 @@
+[TOC]
+
 # 备库并行复制
 
 <img src="http://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/MySQL%E5%AE%9E%E6%88%9845%E8%AE%B2/assets/1a85a3bac30a32438bfd8862e5a34eef.png" alt="img" style="zoom: 50%;" />
