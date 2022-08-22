@@ -15,7 +15,7 @@ CREATE TABLE `t` (
 ) ENGINE=InnoDB;
 
 -- order by 语句
-select city,name,age from t where city='杭州' order by name limit 1000  ;
+select city,name,age from t where city='杭州' order by name limit 1000;
 ```
 
 ## 全字段排序
