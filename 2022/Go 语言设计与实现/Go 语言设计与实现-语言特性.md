@@ -1,3 +1,5 @@
+[TOC]
+
 # 语言特性
 
 ## 函数
@@ -74,7 +76,7 @@ func main() {
 
 ```
 
-<img src="https://img.draveness.me/golang-interface-method-receiver.png" alt="golang-interface-method-receive"  />
+<img src="https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/golang-interface-method-receiver.png" alt="golang-interface-method-receive"  />
 
 - Golang 在传递参数的时候都是传值的。
 - 对于`&Cat{}`来说，意味着复制一个新的`&Cat{}`指针，该指针与原来指针指向相同且唯一的结构体，所以编译器可以隐式地对变量解引用获取指针指向的结构体。
