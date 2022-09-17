@@ -126,7 +126,7 @@ mysql > insert into t(id, k) values(id1, k1),(id2,k2)
 
 分析更新语句，包含下图所展示的四个部分：**内存**、**redo log**、**数据表空间**、**系统表空间**。
 
-![](https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220811010241.png)
+![](https://gcore.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220811010241.png)
 
 **按图所示顺序：**
 
@@ -144,7 +144,7 @@ select * from where k in (k1,k2)
 
 如果读语句发生在更新语句后不久，内存中的数据都还在，那么此时的这两个读操作就与**系统表空间**和`redo log`无关了。
 
-![](https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220811010334.png)
+![](https://gcore.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220811010334.png)
 
 1. 读Page1的时候，直接从内存返回。
 2. 要读Page2的时候，需要把Page2从磁盘读入内存中，然后应用`change buffer`里面的操作日志，生成一个正确的版本并返回结果。

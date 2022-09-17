@@ -50,7 +50,7 @@ $ kubectl apply -f nginx.yaml
 - Pod里所有的容器都共享同一个Network Namespace。所以，Envoy容器就能够通过配置Pod里的iptables规则，把整个Pod的进出流量接管下来。
 - 这时候，Istio的控制层（Control Plane）里的Pilot组件，就能够通过调用每个Envoy容器的API，对这个Envoy代理进行配置，从而实现微服务治理。
 
-![](https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/Istio-Envoy.png)
+![](https://gcore.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/Istio-Envoy.png)
 
 假设这个架构图左边的Pod是已经在运行的应用，而右边的Pod则是我们刚刚上线应用的新版本。此时，Pilot通过调节这两个Pod里的Envoy容器的配置，从而将90%的流量分配给旧版本的应用，将10%的流量分配给新版本应用，并且，还可以在后续的过程中随时调整。
 

@@ -83,7 +83,7 @@ main函数主要通过三步完成了初始化并启动一个自定义控制器�
 
 ### 自定义控制器的工作原理
 
-![自定义控制器工作流程](https://cdn.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220812010356.png)
+![自定义控制器工作流程](https://gcore.jsdelivr.net/gh/Bruce0hh/Bruce0hh.github.io/pic-bed/20220812010356.png)
 
 1. 控制器要从Kubernetes的APIServer里获取Network对象。
 2. Informer使用client跟APIServer建立了连接。实际上是使用Informer中Reflector的`ListAndWatch`方法，来获取监听Network对象实例的变化。
